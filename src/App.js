@@ -1,23 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef, useState } from 'react';
+import signes from './data/signes';
+import { getSign } from './helpers';
+import Modal from './Modal';
+import SigneChinois from './SigneChinois';
 
 function App() {
+  const [sign, setSign] = useState('Inconnu');
+  const ipt = useRef();
+
+  const signesComposants = signes.map((signe) => (
+    <SigneChinois
+      nom={signe.nom}
+      cheminDeLImage={signe.img}
+      desc={signe.description}
+      key={signe.id}
+    />
+  ));
+
+  const calculateSign = () => {
+    const val = Number(ipt.current.value);
+    const signeTrouve = getSign(val);
+    setSign(signeTrouve);
+  };
+
+  const modalInfoAttributs = {
+    type: 'info',
+    visible: false,
+  };
+
+  const modalErrorAttributs = {
+    type: 'error',
+    visible: false,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="py-4">
+        Quel est votre année de naissance ?
+        <input className="bg-gray-200" ref={ipt} />
+        <button className="bg-blue-800 text-white" onClick={calculateSign}>Réponse</button>{sign}
+      </div>
+      <div className="flex flex-wrap">
+        {signesComposants}
+      </div>
+
+      <Modal close title="le titre de ma modale" {...modalInfoAttributs}>
+        <div>lorem ipsum... </div>
+        <form>
+          <input />
+          toto
+        </form>
+      </Modal>
+
+      {/*
+      <Modal title="le titre de ma modale" {...modalErrorAttributs}>
+        <div>lorem ipsum... </div>
+        <form>
+          <input />
+          toto
+        </form>
+      </Modal>
+      */}
     </div>
   );
 }

@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import signes from './data/signes';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+const getSign = (a) => {
+  const b = (a - 4) % 12;
+  return signes[b];
+};
+
+console.log(getSign(1910).nom);
