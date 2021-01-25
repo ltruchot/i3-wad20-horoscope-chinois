@@ -1,7 +1,7 @@
 import './Modal.scss';
 
 const Modal = ({
-  children, title, visible, close,
+  children, title, visible, close, hideModal,
 }) => {
   const clazz = `modal-overlay ${visible ? 'block' : 'hidden'}`;
 
@@ -10,7 +10,7 @@ const Modal = ({
       <div className="modal fixed top-1/2 left-1/2 bg-green-500">
         <div className="flex justify-between">
           <h2 className="text-xl bold underline">{title}</h2>
-          { close ? <button>X</button> : null}
+          { close ? <button onClick={hideModal} type="button">X</button> : null}
         </div>
 
         {children}

@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import FlexContainer from './FlexContainer';
-import Button from './Button';
+import FlexContainer from './demos/FlexContainer';
+import Button from './demos/Button';
+
+import ListeDynamique from './demos/ListeDynamique';
 
 ReactDOM.render(
   <React.StrictMode>

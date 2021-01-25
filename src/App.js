@@ -6,8 +6,9 @@ import SigneChinois from './SigneChinois';
 
 function App() {
   const [sign, setSign] = useState('Inconnu');
+  const [signIndex, setSignIndex] = useState(0);
+  const [modalVisible, setModalVisible] = useState(false);
   const ipt = useRef();
-
   const signesComposants = signes.map((signe) => (
     <SigneChinois
       nom={signe.nom}
@@ -16,23 +17,13 @@ function App() {
       key={signe.id}
     />
   ));
-
   const calculateSign = () => {
     const val = Number(ipt.current.value);
-    const signeTrouve = getSign(val);
-    setSign(signeTrouve);
+    const idx = getSign(val);
+    setSignIndex(idx);
+    setSign(signes[idx].nom);
+    setModalVisible(true);
   };
-
-  const modalInfoAttributs = {
-    type: 'info',
-    visible: false,
-  };
-
-  const modalErrorAttributs = {
-    type: 'error',
-    visible: false,
-  };
-
   return (
     <div>
       <div className="py-4">
@@ -43,24 +34,10 @@ function App() {
       <div className="flex flex-wrap">
         {signesComposants}
       </div>
-
-      <Modal close title="le titre de ma modale" {...modalInfoAttributs}>
-        <div>lorem ipsum... </div>
-        <form>
-          <input />
-          toto
-        </form>
+      <Modal close title="le titre de ma modale" visible={modalVisible} hideModal={() => setModalVisible(false)}>
+        <h2>{sign}</h2>
+        <p>{signes[signIndex].description}</p>
       </Modal>
-
-      {/*
-      <Modal title="le titre de ma modale" {...modalErrorAttributs}>
-        <div>lorem ipsum... </div>
-        <form>
-          <input />
-          toto
-        </form>
-      </Modal>
-      */}
     </div>
   );
 }

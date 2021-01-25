@@ -1,10 +1,7 @@
-// number -> string
-
-import signes from './data/signes';
-
-// transformer une année en signe astrologique
+// number -> number
+// transformer une année en index
 export function getSign(annee) {
-  return signes[annee % 12].nom;
+  return annee % 12;
 }
 /*
 console.log(getSign(2020));
