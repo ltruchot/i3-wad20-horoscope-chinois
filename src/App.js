@@ -39,7 +39,7 @@ function App() {
   return (
     <div>
       <div className="py-4">
-        Quel est votre année de naissance ?
+        Quelle est votre année de naissance ?
         <input className="bg-gray-200" ref={ipt} />
         <button className="bg-blue-800 text-white" onClick={calculateSign}>Réponse</button>{sign}
       </div>
