@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import LittleItaly from './LittleItaly';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <LittleItaly />
   </React.StrictMode>,
   document.getElementById('root'),
 );

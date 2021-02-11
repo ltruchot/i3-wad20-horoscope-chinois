@@ -21,8 +21,9 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': 'off',
-    'react/prop-types': 'off',
     'linebreak-style': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'react/forbid-prop-types': 'off',
+    'react/require-default-props': 'off',
   },
 };

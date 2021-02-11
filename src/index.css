@@ -3,3 +3,6 @@ img {
   display: block;
   width: 100%;
 }
+body {
+  font-family: "Courier New", Courier, monospace;
+}
